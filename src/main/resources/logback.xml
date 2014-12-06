@@ -25,9 +25,11 @@
     
     <logger name="ca.tednology.mortgage" level="trace"/>
     
-    <logger name="org.thymeleaf" level="info"/>
+    <logger name="org.thymeleaf" level="warn"/>
     <logger name="org.thymeleaf.TemplateEngine.CONFIG" level="warn"/>
-    
+
+    <logger name="org.springframework" level="info"/>
+
     <logger name="org.springframework.cache" level="warn"/>
     <logger name="org.springframework.web" level="info"/>
     <logger name="org.springframework.web.util.matcher" level="warn"/> 
@@ -52,7 +54,6 @@
     <root level="warn">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="STDERR"/>
-        <appender-ref ref="FILE"/>
     </root>
 
 </configuration>
