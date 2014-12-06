@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html th:lang="#{wet_language_abbreviation}" class="no-js" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<!--/* ============================================================= */-->
+<!--/*  */-->
+<!--/* ============================================================= */-->
+
+<head>
+    <meta charset="utf-8"/>
+
+    <!--/* ============================================================= */-->
+    <!--/* Sets the page title in the format 'Page Title - System Title' */-->
+    <!--/* ============================================================= */-->
+    <title layout:title-pattern="$CONTENT_TITLE - $DECORATOR_TITLE" th:text="#{system.title}"></title>
+
+    <link rel="shortcut icon" href="" th:href="@{/static/images/favicon.ico}"/>
+    <meta name="dcterms.subject" title="scheme" content="" th:content="#{wet_meta_dc_subject}" />
+    <meta name="dcterms.language" title="ISO639-2" content="" th:content="#{wet_language_abbreviation}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--[if lte IE 8]>
+    <script th:src="@{/wet-resources/js/jquery-ie.min.js}"></script>
+    <script th:src="@{/wet-resources/js/polyfills/html5shiv-min.js}"></script>
+    <link rel="stylesheet" th:href="@{/wet-resources/grids/css/util-ie-min.css}"/>
+    <link rel="stylesheet" th:href="@{/wet-resources/js/css/pe-ap-ie-min.css}"/>
+    <![endif]-->
+
+    <!--[if gt IE 8]><!-->
+    <script th:src="@{/wet-resources/js/jquery.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/wet-resources/grids/css/util-min.css}"/>
+    <link rel="stylesheet" th:href="@{/wet-resources/js/css/pe-ap-min.css}"/>
+    <link rel="stylesheet" th:href="@{/wet-resources/theme-gcwu-extranet/css/theme-min.css}"/>
+    <!--<![endif]-->
+</head>
+<body>
+<div id="wb-body">
+    <!--/* ============================ */-->
+    <!--/* Includes the header fragment */-->
+    <!--/* ============================ */-->
+    <th:block th:replace="layout/main::header"/>
+
+    <div id="body">
+
+        <!--/* ================================================================== */-->
+        <!--/* Define the main content fragment, where pages insert their content */-->
+        <!--/* ================================================================== */-->
+
+        <!-- MainContentStart -->
+        <th:block layout:fragment="content">
+            I'm just placeholder text. This gets replaced in actual pages.
+        </th:block>
+    </div>
+    <!--/* ============================ */-->
+    <!--/* Includes the footer fragment */-->
+    <!--/* ============================ */-->
+    <th:block th:replace="layout/main::footer"/>
+</div>
+
+<!--/* =================================== */-->
+<!--/* Includes the end-of-page javascript */-->
+<!--/* =================================== */-->
+<th:block th:replace="layout/main::scripts"/>
+
+<!--/* ======================================================================= */-->
+<!--/* Defines a section that pages can insert custom javascript includes into */-->
+<!--/* ======================================================================= */-->
+<th:block layout:fragment="page-scripts"/>
+</body>
+</html>

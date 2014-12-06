@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head></head>
+    <body>
+        <th:block th:fragment="header">
+            <div id="wb-skip">
+                <ul id="wb-tphp">
+                    <li id="wb-skip1"><a href="#wb-cont">#{wet_skip_to_main}</a>
+                    </li>
+                    <li id="wb-skip2"><a href="#wb-nav">#{wet_skip_to_nav}</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="wb-head">
+                <div id="wb-head-in">
+                    <header>
+                        <!-- HeaderStart -->
+                        <nav role="navigation">
+                            <div id="gcwu-gcnb">
+                                <h2>Intranet navigation bar</h2>
+                                <div id="gcwu-gcnb-in">
+                                    <div id="gcwu-intranetnb">
+                                        <div id="gcwu-intranetnb-in">
+                                            <ul>
+                                                <li id="gcwu-gcnb1"><a href="#" th:href="@{/inventory}">Dashboard</a></li>
+                                                <li id="gcwu-gcnb3"><a href="#" th:href="@{/signup}">Newsletter Signup</a></li>
+                                                <li id="gcwu-gcnb3"><a href="#" th:href="@{/logout}">Logout</a></li>
+                                                <li id="gcwu-gcnb-lang">
+                                                    <a th:if="${flowExecutionUrl != null}"
+                                                       href="?lang=fr" th:href="|${flowExecutionUrl}&amp;lang=#{wet_other_language_code}|"
+                                                       th:lang="#{wet_other_language_code}" lang="fr" 
+                                                       th:text="#{wet_other_language_name}">Français</a>
+                                                    <a th:if="${flowExecutionUrl == null}"
+                                                       href="?lang=fr" th:href="@{'?lang='+#{wet_other_language_code}}"
+                                                       th:lang="#{wet_other_language_code}" lang="fr" 
+                                                       th:text="#{wet_other_language_name}">Français</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div id="gcwu-gcnb-fip">
+                                        <div id="gcwu-sig">
+                                            <div id="gcwu-sig-in">
+                                                <object
+                                                    th:data="@{/wet-resources/theme-gcwu-intranet/images/sig-blk-en.svg}"
+                                                    data="theme-gcwu-intranet/images/sig-blk-en.svg"
+                                                    role="img" tabindex="-1" aria-label="Government of Canada"
+                                                    type="image/svg+xml">
+                                                    <img
+                                                        th:src="@{/wet-resources/theme-gcwu-intranet/images/sig-en.png}" 
+                                                        alt="Government of Canada" />
+                                                </object>
+                                            </div>
+                                        </div>
+                                        <div id="gcwu-wmms">
+                                            <div id="gcwu-wmms-in">
+                                                <object
+                                                    th:data="@{/wet-resources/theme-gcwu-intranet/images/wmms-intra.svg}"
+                                                    data="theme-gcwu-intranet/images/wmms-intra.svg"
+                                                    role="img" tabindex="-1"
+                                                    aria-label="Symbol of the Government of Canada"
+                                                    type="image/svg+xml">
+                                                    <img
+                                                        th:src="@{/wet-resources/theme-gcwu-intranet/images/wmms-alt.png}" 
+                                                        alt="Symbol of the Government of Canada" />
+                                                </object>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+
+                        <div id="gcwu-bnr" role="banner">
+                            <div id="gcwu-bnr-in">
+                                <div id="gcwu-title">
+                                    <p id="gcwu-title-in">
+                                        <a th:href="@{/}" th:text="#{wet_root_link_text}">Web Experience Toolkit&#160;(WET)</a>
+                                    </p>
+                                </div>
+    
+                                <section role="search" th:if="${searchBar == true}">
+                                    <div id="gcwu-srchbx">
+                                        <h2 th:text="#{wet_search_h2}">Search</h2>
+                                        <form action="#" method="post">
+                                            <div id="gcwu-srchbx-in">
+                                                <label for="gcwu-srch" th:text="#{wet_search_website}">Search website</label>
+                                                <input id="gcwu-srch" name="gcwu-srch" type="search" value="" size="27" maxlength="150" />
+                                                <input id="gcwu-srch-submit" name="gcwu-srch-submit" type="submit" th:value="#{wet_search_button}" value="Search" />
+                                            </div>
+                                        </form>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+
+                        <nav role="navigation">
+                            <div id="gcwu-psnb">
+                                <h2>Site menu</h2>
+                                <div id="gcwu-psnb-in">
+                                    <div class="wet-boew-menubar mb-mega">
+                                        <div>
+                                            <ul class="mb-menu" data-ajax-replace="../includes/menu-en.txt">
+                                                <li><div><a href="http://wet-boew.github.io/wet-boew/index-en.html">WET project</a></div></li>
+                                                <li><div><a href="#">Section 2</a></div></li>
+                                                <li><div><a href="#">Section 3</a></div></li>
+                                                <li><div><a href="#">Section 4</a></div></li>
+                                                <li><div><a href="#">Section 5</a></div></li>
+                                                <li><div><a href="#">Section 6</a></div></li>
+                                                <li><div><a href="#">Section 7</a></div></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div id="gcwu-bc" th:if="${breadCrumbs == true}">
+                                <h2>Breadcrumb trail</h2>
+                                <div id="gcwu-bc-in">
+                                    <ol>
+                                        <li><a th:href="@{/}">Home</a></li>
+                                        <li><a href="#">Somewhere</a></li>
+                                        <li>OH, here!</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </nav>
+                        <!-- HeaderEnd -->
+                    </header>
+                </div>
+            </div>
+        </th:block>  
+        
+        <th:block th:fragment="footer">
+            <div id="wb-foot">
+                <div id="wb-foot-in">
+                    <footer>
+                        <h2 id="wb-nav" th:text="#{wet_footer_h2}">#{wet_footer_h2}</h2>
+                        <!-- FooterStart -->
+                        <nav role="navigation">
+                            <div id="gcwu-sft">
+                                <h3 th:text="#{wet_footer_h3}">#{wet_footer_h3}</h3>
+                                <div id="gcwu-sft-in">
+                                    <section>
+                                        <div class="span-2">
+                                            <h4 class="gcwu-col-head">
+                                                <a href="#">Titre 1 - Title 1</a>
+                                            </h4>
+                                            <ul>
+                                                <li><a href="#">Lien 1 - Link 1</a></li>
+                                                <li><a href="#">Lien 2 - Link 2</a></li>
+                                                <li><a href="#">Lien 3 - Link 3</a></li>
+                                                <li><a href="#">Lien 4 - Link 4</a></li>
+                                                <li><a href="#">Lien 5 - Link 5</a></li>
+                                            </ul>
+                                        </div>
+                                    </section>
+                                    <section>
+                                        <div class="span-2">
+                                            <h4 class="gcwu-col-head">
+                                                <a href="#">Titre 2 - Title 2</a>
+                                            </h4>
+                                            <ul>
+                                                <li><a href="#">Lien 1 - Link 1</a></li>
+                                                <li><a href="#">Lien 2 - Link 2</a></li>
+                                                <li><a href="#">Lien 3 - Link 3</a></li>
+                                                <li><a href="#">Lien 4 - Link 4</a></li>
+                                                <li><a href="#">Lien 5 - Link 5</a></li>
+                                            </ul>
+                                        </div>
+                                    </section>
+                                    <section>
+                                        <div class="span-2">
+                                            <h4 class="gcwu-col-head">
+                                                <a href="#">Titre 2 - Title 2</a>
+                                            </h4>
+                                            <ul>
+                                                <li><a href="#">Lien 1 - Link 1</a></li>
+                                                <li><a href="#">Lien 2 - Link 2</a></li>
+                                                <li><a href="#">Lien 3 - Link 3</a></li>
+                                                <li><a href="#">Lien 4 - Link 4</a></li>
+                                                <li><a href="#">Lien 5 - Link 5</a></li>
+                                            </ul>
+                                        </div>
+                                    </section>
+                                    <section>
+                                        <div class="span-2">
+                                            <h4 class="gcwu-col-head">
+                                                <a href="#">Titre 2 - Title 2</a>
+                                            </h4>
+                                            <ul>
+                                                <li><a href="#">Lien 1 - Link 1</a></li>
+                                                <li><a href="#">Lien 2 - Link 2</a></li>
+                                                <li><a href="#">Lien 3 - Link 3</a></li>
+                                                <li><a href="#">Lien 4 - Link 4</a></li>
+                                                <li><a href="#">Lien 5 - Link 5</a></li>
+                                            </ul>
+                                        </div>
+                                    </section>
+                                    
+                                    <div id="gcwu-tctr">
+                                        <ul>
+                                            <li class="gcwu-tc">
+                                                <a href="" th:href="#{wet_terms_conditions_url}"
+                                                   rel="license" th:text="#{wet_terms_conditions}">#{wet_terms_conditions}</a></li>
+                                            <li class="gcwu-tr">
+                                                <a href="" th:href="#{wet_transparency_url}" th:text="#{wet_transparency}">#{wet_transparency}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                        <!-- FooterEnd -->
+                    </footer>
+                </div>
+            </div>
+        </th:block>
+        
+        <th:block th:fragment="scripts">
+            <!-- ScriptsStart -->
+            <script th:src="@{/wet-resources/js/settings.js}"></script>
+            <!--[if lte IE 8]>
+            <script th:src="@{/wet-resources/theme-gcwu-intranet/js/theme-ie-min.js}"></script>
+            <script th:src="@{/wet-resources/js/pe-ap-ie-min.js}"></script>
+            <script th:src="@{/wet-resources/js/jquerymobile/jquery.mobile-ie.min.js}"></script>
+            <![endif]-->
+            <!--[if gt IE 8]><!-->
+            <script th:src="@{/wet-resources/theme-gcwu-intranet/js/theme-min.js}"></script>
+            <script th:src="@{/wet-resources/js/pe-ap-min.js}"></script>
+            <script th:src="@{/wet-resources/js/jquerymobile/jquery.mobile.min.js}"></script>
+            <!--<![endif]-->
+            <!-- ScriptsEnd -->
+                        
+            <!-- CustomScriptsStart -->
+            <script th:src="@{/wet-resources/js/dependencies/datatables-min.js}"></script>
+            <script th:src="@{/spring-web/dojo/dojo.js}"></script>
+            <script th:src="@{/bones-web/Spring.js.uncompressed.js}"></script>
+            <script th:src="@{/bones-web/Spring-Dojo.js.uncompressed.js}"></script>
+    
+            <script th:src="@{/js/plugins.js}"></script>
+            <script th:src="@{/bones-web/bones-spring-1.0.0.js}"></script>
+    
+            <script>
+                /*var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+                (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+                g.src='//www.google-analytics.com/ga.js';
+                s.parentNode.insertBefore(g,s)}(document,'script'));*/
+            </script>
+            <!-- CustomScriptsEnd -->
+        </th:block>
+    </body>
+</html>

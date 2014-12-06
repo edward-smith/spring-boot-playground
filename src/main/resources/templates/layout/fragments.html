@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head></head>
+    <body>
+        <div th:fragment="messages" id="messages">
+            <div class="module-info" th:if="${@validatorService.hasInfo(flowRequestContext, messages)}">
+                <h3><span class="color-dark">Success!</span></h3>
+                <p>
+                    <th:block th:each="info : ${@validatorService.info(flowRequestContext, messages)}">
+                        <span th:text="${info}">Hey! This is an info message!</span><br />
+                    </th:block>
+                </p> 
+            </div>
+            <div class="module-attention" th:if="${@validatorService.hasWarnings(flowRequestContext, messages)}">
+                <h3><span class="color-dark">Warning:</span> please review the following information before continuuing</h3>
+                <p>
+                    <th:block th:each="warn : ${@validatorService.warnings(flowRequestContext, messages)}">
+                        <span th:text="${warn}">Hey! This is a warning message!</span><br />
+                    </th:block> 
+                </p> 
+            </div>
+            <div class="module-alert" th:if="${@validatorService.hasErrors(flowRequestContext, messages) or #fields.hasErrors('${'+'__${formName}__'+'.*}')}">
+                <h3><span class="color-dark">Error:</span> please correct the following before continuing</h3>
+                <p>
+                    <th:block th:each="err : ${#fields.errors('${'+'__${formName}__'+'.*}')}">
+                        <span th:text="${err}">Hey! This is an error message!</span><br />
+                    </th:block> 
+                    <th:block th:if="${@validatorService.hasErrors(flowRequestContext, messages)}">
+                        <th:block th:each="err : ${@validatorService.errors(flowRequestContext, messages)}" >
+                            <span th:text="${err}">Hey! This is a error message!</span><br />
+                        </th:block> 
+                    </th:block>
+                </p> 
+            </div>
+        </div>
+    </body>
+</html>
